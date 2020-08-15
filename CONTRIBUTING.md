@@ -12,3 +12,4 @@ pre-commit install
 # another good idea is update the hooks to the latest version
 pre-commit autoupdate
 ```
+## Best Practices
