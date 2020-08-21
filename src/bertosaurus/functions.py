@@ -1,8 +1,12 @@
+import warnings
 from itertools import chain
 
 import nltk
 import spacy
+import streamlit as st
 from nltk.corpus import wordnet
+
+warnings.filterwarnings("ignore")
 
 
 def is_model_present(model):
@@ -15,6 +19,22 @@ def is_model_present(model):
 
 def download_model(model):
     spacy.cli.download(model)
+
+
+def check_model_status():
+    with st.spinner("Checking if required models are installed..."):
+        if is_model_present("en_trf_bertbaseuncased_lg") and is_model_present(
+            "en_core_web_sm"
+        ):
+            return
+        else:
+            download_model("en_trf_bertbaseuncased_lg")
+            download_model("en_core_web_sm")
+            return
+
+
+def load_model(name):
+    return spacy.load(name)
 
 
 def get_syns(text, pos):
@@ -44,7 +64,12 @@ def get_word_pos(doc, word):
     return doc_to_dict(doc)[word]
 
 
-def rank_syns(sentence, word, nlp, bert):
+def ranked_synonyms(sentence, word, nlp=None, bert=None):
+    if not bert:
+        bert = load_model("en_trf_bertbaseuncased_lg")
+
+    if not nlp:
+        nlp = load_model("en_core_web_sm")
 
     spacy_to_nltk_pos = {"ADJ": "a", "ADV": "r", "NOUN": "n", "VERB": "v"}
 

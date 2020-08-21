@@ -9,3 +9,6 @@ except DistributionNotFound:
     __version__ = 'unknown'
 finally:
     del get_distribution, DistributionNotFound
+
+from . import functions
+from .functions import *
