@@ -45,8 +45,13 @@ Outputs the synonyms and their corresponding `similarity_score`:
  ```
 
 ## TODO
+- build streamlit web app
 - make `sentence` optional
 - find other sources of synonyms
+- build documentation
+- update CONTRIBUTING
+- create unit tests
+- add github actions/tests: vercel, travis
 
 ## License
 Free software: MIT license
