@@ -5,6 +5,7 @@ from itertools import chain
 import nltk
 import spacy
 from nltk.corpus import wordnet
+from nltk.stem import WordNetLemmatizer
 
 
 class Bertosaurus:
@@ -20,6 +21,8 @@ class Bertosaurus:
         except OSError:
             self._download_model("en_core_web_sm")
             self.nlp = self._load_model("en_core_web_sm")
+
+        self.lemmatizer = WordNetLemmatizer()
 
     def _download_model(self, model):
         spacy.cli.download(model)
@@ -40,7 +43,14 @@ class Bertosaurus:
         synonyms = set(
             chain.from_iterable([word.lemma_names() for word in synonyms])
         )
-        synonyms.remove(text)
+
+        lemmatized_text = self.lemmatizer.lemmatize(text, pos=pos)
+        
+        try:
+            synonyms.remove(lemmatized_text)
+        except KeyError:
+            pass
+        
         return list(synonyms)
 
     def _doc_to_dict(self, doc):

@@ -45,7 +45,7 @@ Outputs the synonyms and their corresponding `similarity_score`:
  ```
 
 ## TODO
-- build streamlit web app
+- return synonyms in the same POS as `word`
 - make `sentence` optional
 - find other sources of synonyms
 - build documentation
