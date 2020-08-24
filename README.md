@@ -51,6 +51,7 @@ Outputs the synonyms and their corresponding `similarity_score`:
 - build documentation
 - update CONTRIBUTING
 - create unit tests
+- add github actions/tests: vercel, travis
 
 ## License
 Free software: MIT license
