@@ -45,15 +45,7 @@ Outputs the synonyms and their corresponding `similarity_score`:
  ```
 
 ## TODO
-- return synonyms in the same POS as `word`
 - bertosaurus logo
-- add docstrings
-- make `sentence` optional
-- find other sources of synonyms
-- build documentation page (read the docs or sphinx)
-- update CONTRIBUTING
-- create unit tests
-- add github actions/tests: vercel, travis
 
 ## License
 Free software: MIT license
