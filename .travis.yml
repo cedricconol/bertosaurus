@@ -28,7 +28,9 @@ jobs:
       # env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements.txt --use-mirrors
+install:
+  - pip3 install --upgrade pip 
+  - pip3 install -r requirements.txt --use-mirrors
 
 # Command to run tests, e.g. python setup.py test
 script:
