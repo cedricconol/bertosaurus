@@ -29,11 +29,12 @@ jobs:
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - pip3 install --upgrade pip 
+  - pip3 install --upgrade -v pip 
   - pip3 install -r requirements_dev.txt
 
 # Command to run tests, e.g. python setup.py test
 script:
+  - python -m unittest discover -s tests -t . || python3 -m unittest discover -s tests -t .
 
 # Assuming you have installed the travis-ci CLI tool, after you
 # create the Github repo and add it to Travis, run the
